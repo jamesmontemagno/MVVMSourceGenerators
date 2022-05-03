@@ -52,14 +52,4 @@
 	  <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0-preview3" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="AppShell.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>
-	
 </Project>
