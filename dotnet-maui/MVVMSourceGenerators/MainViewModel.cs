@@ -3,12 +3,16 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Diagnostics;
 using System.Diagnostics;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace MVVMSourceGenerators;
 
-
-public partial class MainViewModel : ObservableObject
-{
+[INotifyPropertyChanged]
+public partial class MainViewModel 
+  
+{    
+    int count = 0;
     public MainViewModel()
     {
     }
@@ -17,15 +21,15 @@ public partial class MainViewModel : ObservableObject
     [AlsoNotifyChangeFor(nameof(FullName))]
     string firstName;
 
-
     [ObservableProperty]
     [AlsoNotifyChangeFor(nameof(FullName))]
     string lastName;
 
 
-    public string FullName => $"{FirstName} {LastName}";
 
-    int count = 0;
+    public string FullName =>
+        $"{FirstName} {LastName}";
+
 
     [ICommand]
     async Task Submit()
