@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.MainPage"
+             xmlns:local="clr-namespace:App1"
+             x:DataType="local:MainViewModel">
+    <ContentPage.BindingContext>
+        <local:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto,*"
+              Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
+
+            <Entry 
+                Placeholder="First name"
+                Text="{Binding FirstName}"
+                Grid.Row="0" />
+
+
+            <Entry 
+                Placeholder="Last name"
+                Text="{Binding LastName}"
+                Grid.Row="1" />
+
+            <Label 
+                Text="{Binding FullName}"
+                Grid.Row="2"
+                FontSize="18"
+                FontAttributes="Bold"/>
+
+            <Button 
+                Text="Submit Ticket"
+                Grid.Row="3"
+                Command="{Binding SubmitCommand}"
+                HorizontalOptions="Center" />
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
