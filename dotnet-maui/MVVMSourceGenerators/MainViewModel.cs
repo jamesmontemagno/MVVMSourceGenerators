@@ -5,11 +5,12 @@ using CommunityToolkit.Diagnostics;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 namespace MVVMSourceGenerators;
 
 [INotifyPropertyChanged]
-public partial class MainViewModel 
+public partial class MainViewModel
   
 {    
     int count = 0;
@@ -18,11 +19,14 @@ public partial class MainViewModel
     }
 
     [ObservableProperty]
-    [AlsoNotifyChangeFor(nameof(FullName))]
+    [NotifyPropertyChangedFor(nameof(FullName))]
+    [property: JsonRequired]
+    [property: JsonPropertyName("fn")]
     string firstName;
 
     [ObservableProperty]
-    [AlsoNotifyChangeFor(nameof(FullName))]
+    [NotifyPropertyChangedFor(nameof(FullName))]
+    [property: JsonPropertyName("ln")]
     string lastName;
 
 
@@ -31,11 +35,13 @@ public partial class MainViewModel
         $"{FirstName} {LastName}";
 
 
-    [ICommand]
+
+
+    [RelayCommand]
     async Task Submit()
     {
         Debug.WriteLine("DEBUG INFO: Submitted");
-
+        await Task.Delay(5000);
         try
         {
             count++;
@@ -62,7 +68,5 @@ public partial class MainViewModel
         Guard.HasSizeLessThan(array, 10);
         Guard.IsInRangeFor(index, array);
         Guard.IsNotNullOrEmpty(text);
-
     }
-
 }

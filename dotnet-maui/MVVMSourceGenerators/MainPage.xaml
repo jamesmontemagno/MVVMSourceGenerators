@@ -7,7 +7,7 @@
     </ContentPage.BindingContext>
 
     <ScrollView>
-        <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto,*"
+        <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto,Auto,*"
               Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
 
             <Entry 
@@ -27,13 +27,19 @@
                 FontSize="18"
                 FontAttributes="Bold"/>
 
+            
+
             <Button 
                 Text="Submit Ticket"
                 Grid.Row="3"
                 Command="{Binding SubmitCommand}"
                 HorizontalOptions="Center" />
 
-            <Image Grid.Row="4"
+            <ActivityIndicator Grid.Row="4"
+                               IsRunning="{Binding SubmitCommand.IsRunning}"
+                               IsVisible="{Binding SubmitCommand.IsRunning}"/>
+
+            <Image Grid.Row="5"
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 WidthRequest="250"
