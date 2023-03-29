@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "MVVMSourceGenerators (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "MVVMSourceGenerators (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}
